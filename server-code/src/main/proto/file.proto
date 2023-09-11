@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "bits.pilani";
+option java_outer_classname = "FileGrpcProto";
+
+package file;
+
+service FileGrpc {
+  rpc findFile (FileRequest) returns (FileContent) {}
+//  rpc compareFile (FileCompareRequest) returns (FileCompareResponse) {}
+  rpc ping (PingRequest) returns (PingResponse){}
+}
+
+//message FileCompareRequest {
+//  FileContent firstContent = 1;
+//  FileContent secondContent = 2;
+//}
+//message FileCompareResponse {
+//  bool isSame=1;
+//}
+message FileRequest {
+  string path = 1;
+}
+
+message FileContent {
+  string content = 1;
+}
+
+message PingRequest{
+  string name=1;
+}
+
+message PingResponse{
+  string message=1;
+}
